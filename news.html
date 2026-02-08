@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Latest cybersecurity news and updates about Kali Linux, penetration testing, and ethical hacking">
+    <meta name="keywords" content="kali linux, cybersecurity news, penetration testing, ethical hacking, security updates">
+    <title>Latest Cybersecurity News | Kali Linux Features</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/news.css">
+    <link rel="canonical" href="https://meelad5815.github.io/kali-linux-features-website/news.html">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1><a href="index.html">Kali Linux</a></h1>
+            <ul>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#tools">Tools</a></li>
+                <li><a href="news.html" class="active">News</a></li>
+                <li><a href="index.html#download">Download</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="news-header">
+            <h1>Latest Cybersecurity News</h1>
+            <p>Auto-updated news from trusted cybersecurity sources</p>
+        </section>
+
+        <section id="news-feed">
+            <!-- Articles will be automatically loaded here -->
+            <div class="loading">Loading latest news...</div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kali Linux Features Website | Educational Purpose Only</p>
+        <p>Kali Linux is a trademark of Offensive Security</p>
+    </footer>
+
+    <!-- Load RSS Fetcher -->
+    <script src="js/rss-fetcher.js"></script>
+    <script src="js/auto-content.js"></script>
+    <script>
+        // Initialize RSS Fetcher with custom options
+        document.addEventListener('DOMContentLoaded', function() {
+            const fetcher = new RSSFetcher({
+                feeds: [
+                    'https://www.kali.org/rss.xml',
+                    'https://gbhackers.com/feed/',
+                    'https://www.bleepingcomputer.com/feed/',
+                    'https://thehackernews.com/feeds/posts/default'
+                ],
+                maxArticles: 15,
+                updateInterval: 3600000, // 1 hour
+                container: '#news-feed'
+            });
+
+            // Start auto-updating
+            fetcher.startAutoUpdate();
+
+            // Also initialize SEO manager
+            const seoManager = new AutoContentManager({
+                container: '#news-feed'
+            });
+        });
+    </script>
+</body>
+</html>
